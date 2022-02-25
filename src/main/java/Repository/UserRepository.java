@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UserRepository implements IUserRepository {
 
-    private ArrayList<User> userList = new ArrayList<>();
+    public static ArrayList<User> userList = new ArrayList<>();
 
     @Override
     public void create(User user) {
