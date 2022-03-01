@@ -3,6 +3,7 @@ package Repository;
 import Entitie.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -38,11 +39,38 @@ class UserRepositoryTest {
     }
 
     @Test
-    void update() {
+    void update_updateUserReturnsProposedDataforUpdate() {
+        UserRepository userRepository = new UserRepository();
+        User user = new User();
+        int id = 0;
+        user.setId(userRepository.idcont());
+        user.setName("Jardel");
+        user.setAge(25);
+        user.setEmail("jardel@email.com");
+        userRepository.create(user);
+
+        User user1 = new User();
+        user1.setName("Jardel");
+        user1.setAge(22);
+        user1.setEmail("jardel@email.com");
+        userRepository.update(id, user1);
+        var userTest = user1;
+        Assertions.assertEquals(userTest,UserRepository.userList.get(0));
+
     }
 
     @Test
-    void delete() {
+    void delete_DeletingElementSizeListDecrementsOneUnit() {
+        UserRepository userRepository = new UserRepository();
+        User user = new User();
+        user.setId(userRepository.idcont());
+        user.setName("Jardel");
+        user.setAge(25);
+        user.setEmail("jardel@email.com");
+        userRepository.create(user);
+        int AtualSize = UserRepository.userList.size();
+        userRepository.delete(0);
+        Assertions.assertEquals(AtualSize - 1, UserRepository.userList.size());
     }
 
 
