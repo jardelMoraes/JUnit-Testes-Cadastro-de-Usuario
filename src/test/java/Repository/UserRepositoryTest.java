@@ -2,13 +2,7 @@ package Repository;
 
 import Entitie.User;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserRepositoryTest {
 
@@ -54,8 +48,7 @@ class UserRepositoryTest {
         user1.setAge(22);
         user1.setEmail("jardel@email.com");
         userRepository.update(id, user1);
-        var userTest = user1;
-        Assertions.assertEquals(userTest,UserRepository.userList.get(0));
+        Assertions.assertEquals(user1,UserRepository.userList.get(0));
 
     }
 
